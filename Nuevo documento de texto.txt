@@ -1,0 +1,2 @@
+https://www.delftstack.com/es/howto/javascript/get-ip-address-javascript/
+https://www.zentica-global.com/es/zentica-blog/ver/como-obtener-la-direccion-ip-del-cliente-solo-con-javascript-6073b64a10877
