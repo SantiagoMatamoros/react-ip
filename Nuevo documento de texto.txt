@@ -1,0 +1,6 @@
+https://www.delftstack.com/es/howto/javascript/get-ip-address-javascript/
+https://www.zentica-global.com/es/zentica-blog/ver/como-obtener-la-direccion-ip-del-cliente-solo-con-javascript-6073b64a10877
+https://norfipc.com/codigos/obtener-datos-asociados-direccion-ip-internet.php
+https://es.acervolima.com/como-obtener-la-direccion-ip-del-cliente-usando-javascript/
+https://www.it-swarm-es.com/es/javascript/como-obtener-la-direccion-ip-del-cliente-usando-javascript/958140035/
+https://geekflare.com/es/geolocation-ip-api/
