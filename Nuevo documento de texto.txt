@@ -7,3 +7,4 @@ https://geekflare.com/es/geolocation-ip-api/
 https://morioh.com/p/ab04717990c6
 
 https://www.npmjs.com/package/ip-geolocation-api-javascript-sdk
+https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
