@@ -1,12 +1,1 @@
-https://www.delftstack.com/es/howto/javascript/get-ip-address-javascript/
-https://www.zentica-global.com/es/zentica-blog/ver/como-obtener-la-direccion-ip-del-cliente-solo-con-javascript-6073b64a10877
-https://norfipc.com/codigos/obtener-datos-asociados-direccion-ip-internet.php
-https://es.acervolima.com/como-obtener-la-direccion-ip-del-cliente-usando-javascript/
-https://www.it-swarm-es.com/es/javascript/como-obtener-la-direccion-ip-del-cliente-usando-javascript/958140035/
-https://geekflare.com/es/geolocation-ip-api/
-https://morioh.com/p/ab04717990c6
-
-https://www.npmjs.com/package/ip-geolocation-api-javascript-sdk
-https://stackoverflow.com/questions/391979/how-to-get-clients-ip-address-using-javascript
-
-https://infinitbility.com/how-to-get-ip-address-in-react-native
+https://books.google.com.ec/books?id=J1d_9l6zlAIC&pg=PA93&lpg=PA93&dq=interceptar+peticiones+http+en+pas.net&source=bl&ots=GsS7nKTp7J&sig=ACfU3U0LjdXSbYdX5wCPz6kRBVxvYdz_BQ&hl=es-419&sa=X&ved=2ahUKEwilsLnIqLz1AhU9RjABHVRnCfIQ6AF6BAgXEAM#v=onepage&q=interceptar%20peticiones%20http%20en%20pas.net&f=false
