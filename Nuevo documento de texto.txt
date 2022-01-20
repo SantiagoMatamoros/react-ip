@@ -3,3 +3,6 @@ https://books.google.com.ec/books?id=J1d_9l6zlAIC&pg=PA93&lpg=PA93&dq=intercepta
 https://docs.microsoft.com/es-es/aspnet/core/security/ip-safelist?view=aspnetcore-6.0
 
 https://qastack.mx/programming/2577496/how-can-i-get-the-clients-ip-address-in-asp-net-mvc
+
+https://elvex.ugr.es/decsai/csharp/pdf/web/3-web-applications.pdf
+
