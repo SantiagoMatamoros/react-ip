@@ -6,3 +6,6 @@ https://qastack.mx/programming/2577496/how-can-i-get-the-clients-ip-address-in-a
 
 https://elvex.ugr.es/decsai/csharp/pdf/web/3-web-applications.pdf
 
+https://qastack.mx/programming/11726848/asp-net-mvc-4-intercept-all-incoming-requests
+
+
