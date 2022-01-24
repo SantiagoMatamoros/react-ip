@@ -14,4 +14,8 @@ https://stackoverflow.com/questions/55844730/how-to-intercept-get-request-in-api
 
 https://docs.microsoft.com/en-us/archive/msdn-magazine/2002/august/asp-net-intercept-monitor-and-modify-web-requests-with-http-filters-in-isapi-and-asp-net
 
+https://techclub.tajamar.es/actionfilterattribute-y-sus-metodos-para-crear-filtros-personalizados/
+
+https://docs.microsoft.com/en-us/dotnet/api/system.web.mvc.actionfilterattribute?view=aspnet-mvc-5.2
+
 
