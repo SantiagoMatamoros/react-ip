@@ -21,3 +21,5 @@ https://docs.microsoft.com/en-us/dotnet/api/system.web.mvc.actionfilterattribute
 https://docs.microsoft.com/es-es/aspnet/mvc/overview/older-versions/hands-on-labs/aspnet-mvc-4-custom-action-filters
 
 https://docs.microsoft.com/es-es/aspnet/core/security/ip-safelist?view=aspnetcore-6.0
+
+https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller?view=aspnetcore-6.0&tabs=visual-studio -------------REVISAR-------------
