@@ -27,3 +27,5 @@ https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-cont
 -----------------------------------GEOLOCALIZACION------------------------------
 
 https://blog.nubecolectiva.com/geolocalizar-on-page-load-con-google-maps-y-react-js/
+
+https://morioh.com/p/0c383e1bb804
