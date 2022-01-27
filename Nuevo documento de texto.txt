@@ -23,3 +23,7 @@ https://docs.microsoft.com/es-es/aspnet/mvc/overview/older-versions/hands-on-lab
 https://docs.microsoft.com/es-es/aspnet/core/security/ip-safelist?view=aspnetcore-6.0
 
 https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-controller?view=aspnetcore-6.0&tabs=visual-studio -------------REVISAR-------------
+
+-----------------------------------GEOLOCALIZACION------------------------------
+
+https://blog.nubecolectiva.com/geolocalizar-on-page-load-con-google-maps-y-react-js/
