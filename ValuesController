@@ -1,0 +1,60 @@
+using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace InterceptorPeticiones.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ValuesController : ControllerBase
+    {
+        // GET: api/<ValuesController>
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2" };
+        }
+
+        // GET api/<ValuesController>/5
+        [HttpGet("{id}")]
+        public HttpResponseMessage Get(int id)
+        {
+            HttpContent requestContent = Request.HttpContext;
+
+            string iphost = Request.Host.Value;
+            var remoteIp = context.Connection.RemoteIpAddress;
+            var port = context.Connection.LocalPort;
+            var localIp = context.Connection.LocalIpAddress;
+            var mac_device = context.Request.Headers["User-Agent"].ToString();
+            var bytes = remoteIp.GetAddressBytes();
+            var badIp = true;
+            return "value";
+        }
+
+        // POST api/<ValuesController>
+        [HttpPost]
+        public object Post(Object objpersona)
+        {
+            return Ok(objpersona);
+        }
+
+        // PUT api/<ValuesController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<ValuesController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+
+        [HttpHead]
+        public object Head(Object objpersona)
+        {
+            return Ok(objpersona);
+        }
+    }
+}
