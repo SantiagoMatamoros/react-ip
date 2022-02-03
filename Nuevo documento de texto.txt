@@ -28,6 +28,8 @@ https://www.rafaelacosta.net/Blog/2018/10/14/c%C3%B3mo-recibir-datos-desde-un-fo
 
 https://riunet.upv.es/bitstream/handle/10251/107078/FERRANDIS%20-%20Desarrollo%20back-end%20en%20.NET%20de%20una%20aplicaci%C3%B3n%20para%20la%20obtenci%C3%B3n%20de%20opiniones%20mediante....pdf?sequence=1&isAllowed=y ----------------REVISAR-------------
 
+https://geeks.ms/etomas/2016/03/17/webapiobjeto-o-httpresonsemessage/ ----------------------------RESPUESTA HTTP---------------------
+
 -----------------------------------GEOLOCALIZACION------------------------------
 
 https://blog.nubecolectiva.com/geolocalizar-on-page-load-con-google-maps-y-react-js/
