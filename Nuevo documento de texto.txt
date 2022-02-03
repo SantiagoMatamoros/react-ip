@@ -30,6 +30,8 @@ https://riunet.upv.es/bitstream/handle/10251/107078/FERRANDIS%20-%20Desarrollo%2
 
 https://geeks.ms/etomas/2016/03/17/webapiobjeto-o-httpresonsemessage/ ----------------------------RESPUESTA HTTP---------------------
 
+https://nicolocodev.wordpress.com/2012/07/05/web-apiusando-el-httpresponsemessage/ ------------------respuesta http-----------------
+
 -----------------------------------GEOLOCALIZACION------------------------------
 
 https://blog.nubecolectiva.com/geolocalizar-on-page-load-con-google-maps-y-react-js/
