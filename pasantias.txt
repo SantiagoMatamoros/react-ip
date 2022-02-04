@@ -1,0 +1,3 @@
+- Migracion de datos al Sistema de Administracion de Poderes (Documentos de Poderes)
+- Reporte de pruebas del sistema de Agenda Electronica, Controla y Valildador de Documentos
+- Diseño para nuevo sistema "Reserva de turnos"
