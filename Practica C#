@@ -1,0 +1,149 @@
+using System;
+
+namespace practica
+{
+    class Program
+    {
+
+    
+//-----------------------ELSE IF------------------------- 
+
+//Console.WriteLine("Introduzca su edad: ");
+
+//int edad = Int32.Parse(Console.ReadLine());
+
+//if (edad < 18) Console.WriteLine("Usted es menor de edad!");
+
+//else if (edad < 30) Console.WriteLine("Joven");
+
+//else if (edad < 60) Console.WriteLine("Adulto");
+
+//else Console.WriteLine("Anciano");
+
+//-----------------------SWITCH CASE------------------------- 
+
+//Console.WriteLine("Ingrese elija medio de transporte (auto, tren, avion)");
+
+//string medioTransporte = Console.ReadLine();
+
+//switch (medioTransporte)
+//{
+//    case "auto":
+//        Console.WriteLine("Velocidad media 90 km/h");
+//        break;
+
+//    case "tren":
+//        Console.WriteLine("Velocidad media 250 km/h");
+//        break ;
+
+//    case "avion":
+//        Console.WriteLine("Velocidad media 600 km/h");
+//        break;
+
+//    default:
+//        Console.WriteLine("Transporte no contemplado");
+//        break;
+//}
+
+//Console.WriteLine("Ha termino el programa");
+
+//------------------------EXCEPCIONES---------------------
+
+//Random Aleatorio = new Random();
+//int numAleatorio = Aleatorio.Next(0, 100);
+//int numero = 0;
+//Console.WriteLine("Adivina numero entre 0 y 100\nIngrese un numero: ");
+//try
+//{
+//    numero = int.Parse(Console.ReadLine());
+//}
+//catch (Exception ex)
+//{
+//    Console.WriteLine(ex.Message);  
+//}
+//bool encontrado = false;
+//int contador = 0;
+//try { 
+//while(encontrado == false)
+//{
+//    if(numero < numAleatorio)
+//    {
+//        Console.WriteLine("El numero es mayor: ");
+//        numero = int.Parse(Console.ReadLine());
+//        contador++;
+//    }
+//    if(numero > numAleatorio)
+//    {
+//        Console.WriteLine("El numero es menor: ");
+//        numero = int.Parse(Console.ReadLine());
+//        contador++;
+//    }
+//    if(numero == numAleatorio)
+//    {
+//        contador++;
+//        Console.WriteLine($"Correcto! numero adivinado con {contador} intentos!");
+//        encontrado = true;
+//    }
+//}
+//}
+//catch(Exception ex)
+//{
+//    Console.WriteLine(ex.Message);
+//}
+
+//-------------------------THROW------------------------
+
+//public static void Main(string[] args)
+//{
+//    Console.WriteLine("Ingrese numero del mes: ");
+//    int numeroMes = int.Parse(Console.ReadLine());
+//    Console.WriteLine(obtenerMes(numeroMes));
+
+//}
+
+
+//public static string obtenerMes(int mes)
+//{
+//    switch (mes)
+//    {
+//        case 1:
+//            return "Enero";
+
+//        case 2:
+//            return "Febrero";
+//        case 3:
+//            return "Marzo";
+
+//        case 4:
+//            return "Abril";
+//        case 5:
+//            return "Mayo";
+
+//        case 6:
+//            return "Junio";
+//        case 7:
+//            return "Julio";
+
+//        case 8:
+//            return "Agosto";
+//        case 9:
+//            return "Septiembre";
+
+//        case 10:
+//            return "Octubre";
+//        case 11:
+//            return "Noviembre";
+
+//        case 12:
+//            return "Diciembre";
+
+//        default:
+//            return "Mes Erroneo";
+//                    throw new ArgumentOutOfRangeException();    
+//    }
+//}
+
+//--------------------
+
+    }
+}
