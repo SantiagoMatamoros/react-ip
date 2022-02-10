@@ -143,7 +143,97 @@ namespace practica
 //    }
 //}
 
-//--------------------
+//--------------------GETTERS Y SETTERS-------------------
+
+        //    public static void Main(string[] args)
+        //    {
+        //        Vehiculo auto = new Vehiculo();
+        //        Vehiculo auto2 = new Vehiculo(0.750, 2200.5);
+        //        Vehiculo auto3 = new Vehiculo();
+        //        Console.WriteLine(auto.getInfoVehiculo());
+        //        Console.WriteLine(auto2.getInfoVehiculo());
+        //        Console.WriteLine(auto2.getExtras());
+        //        auto3.setExtras(true, "Cuero");
+        //        Console.WriteLine(auto3.getExtras());
+        //    }
+        //}
+        //public class Vehiculo
+        //    {
+        //        private double ancho;
+        //        private double largo;
+        //        private bool climatizador;
+        //        private string tapiceria;
+
+        //        public Vehiculo()
+        //        {
+        //            largo = 2300.5;
+        //            ancho = 0.800;
+        //            tapiceria = "Tela";
+        //        }
+        //        public Vehiculo(double largo, double ancho)
+        //        {
+        //            this.largo = largo;
+        //            this.ancho = ancho;
+        //            tapiceria = "Tela";
+        //    }
+
+        //        public string getInfoVehiculo()
+        //        {
+        //            return "Informacion del vehiculo:\nAncho: " + ancho + " Largo: " + largo + " Climatizador: " + climatizador + " Tapiceria: " + tapiceria; 
+        //        }
+
+        //        public void setExtras(bool paramClimatizador, string paramTapiceria)
+        //        {
+        //            climatizador = paramClimatizador;
+        //            tapiceria = paramTapiceria; 
+        //        }
+
+        //        public string getExtras()
+        //        {
+        //        return "Extras del vehiculo:\nTapiceria: " + tapiceria + " Climatizador: " + climatizador;
+        //        }
+        //    }
+
+        //--------------------------POO-----------------------------
+
+        public static void Main(string[] args)
+        {
+            realizarTarea();
+        }
+
+        static void realizarTarea()
+
+        {
+            Punto origen = new Punto();
+            Punto destino = new Punto(150, 90);
+            double distancia = origen.getDistancia(destino);
+            Console.WriteLine($"La distancia entre los puntos es de: {distancia}");
+        }
+        //-------------------------CLASE PUNTO-----------------------
+        public class Punto
+        {
+        private int x, y;
+        public Punto()
+        {
+            this.x = 0;
+            this.y = 0; 
+        }
+        public Punto(int x, int y)
+        {
+            this.x = x;
+            this.y = y;
+        }
+
+        public double getDistancia(Punto otroPunto)
+        {
+            int xDif =this.x - otroPunto.x;
+            int yDif =this.y - otroPunto.y;
+
+            double distanciaPuntos = Math.Sqrt(Math.Pow(xDif, 2) + Math.Pow(yDif, 2));
+            return distanciaPuntos;
+        }
+
+    }
 
     }
 }
