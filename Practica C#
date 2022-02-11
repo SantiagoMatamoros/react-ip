@@ -366,6 +366,28 @@ namespace practica
             }
             return datos;
         }
+        
+        //-----------------------ARRAYS EN RETORNOS DE METODOS----------------
+
+        static void Main(string[] args)
+        {
+            
+            foreach (int i in leerDatos()) Console.WriteLine(i);    
+            
+        }
+
+        static int[] leerDatos()
+        {
+            Console.WriteLine("Cuantos elemnentos desea en el array?: ");
+            int respuesta = int.Parse(Console.ReadLine());
+            int[] datos = new int[respuesta];
+            for (int i = 0; i < respuesta; i++)
+            {
+                Console.WriteLine($"Introduccion el dato para la posicion {i}: ");
+                datos[i] = int.Parse(Console.ReadLine());
+            }
+            return datos;
+        }
     }
     
 }
