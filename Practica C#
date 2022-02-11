@@ -282,7 +282,7 @@ namespace practica
 //-----------------------------ARRAYS-------------------------------
 
 
-        public static void Main(string[] args)
+         public static void Main(string[] args)
         {
             //array implicito
             var datos = new[] {"Juan", "Diaz", "España"};
@@ -290,7 +290,9 @@ namespace practica
             //array de objetos
             Empleados[] arrayEmpleados = new Empleados[2];
             Empleados Ana = new Empleados("Ana", 34);
+            Empleados Juan = new Empleados("Juan", 23);
             arrayEmpleados[0] = Ana;
+            arrayEmpleados[1] = Juan;
 
             //array de tipos o clases anonimas
 
@@ -301,19 +303,68 @@ namespace practica
                 new {nombre = "Pedro", edad = 37}
             };
 
+            for(int i = 0;i < arrayEmpleados.Length ; i ++)
+            {
+                Console.WriteLine(arrayEmpleados[i].getEmpleados());
+            }
+            Console.WriteLine("----------------------------------");
+            foreach(string valores in datos)
+            {
+                Console.WriteLine(valores);   
+            }
+            Console.WriteLine("----------------------------------");
+            foreach (var variable in personas)
+            {
+                Console.WriteLine(variable);
+            }
+            {
+
+            }
+
         }
-        
         
 
     }
     public class Empleados
     {
-        private string nombre;
+        public string nombre;
         private int edad;
         public Empleados(string nombre, int edad)
         {
             this.nombre = nombre;
             this.edad = edad;
+        }
+
+        public string getEmpleados()
+        {
+            return "Nombre: " + nombre + " Edad: " + edad;
+        }
+        
+        //-----------------------ARRAYS EN RETORNOS DE METODOS----------------
+
+
+
+        static void Main(string[] args)
+        {
+            
+            foreach (int i in leerDatos())
+            {
+                Console.WriteLine(i);   
+            }  
+            
+        }
+
+        static int[] leerDatos()
+        {
+            Console.WriteLine("Cuantos elemnentos desea en el array?: ");
+            int respuesta = int.Parse(Console.ReadLine());
+            int[] datos = new int[respuesta];
+            for (int i = 0; i < respuesta; i++)
+            {
+                Console.WriteLine($"Introduccion el dato para la posicion {i}: ");
+                datos[i] = int.Parse(Console.ReadLine());
+            }
+            return datos;
         }
     }
     
