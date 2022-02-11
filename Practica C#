@@ -199,6 +199,11 @@ namespace practica
         public static void Main(string[] args)
         {
             realizarTarea();
+            
+            var miVarible = new {nombre ="Juan", edad = 24 }; //DECLARACION DE CLASE ANONIMA
+            Console.WriteLine(miVarible.nombre + " " + miVarible.edad);
+            var miOtraVariable = new { nombre = "Ana", edad = 25 };
+            miVarible = miOtraVariable;
         }
 
         static void realizarTarea()
@@ -208,6 +213,10 @@ namespace practica
             Punto destino = new Punto(150, 90);
             double distancia = origen.getDistancia(destino);
             Console.WriteLine($"La distancia entre los puntos es de: {distancia}");
+            Console.WriteLine($"Numero de objetos creados:{Punto.ContadorDeObjetos()}");
+            Punto.calcular();
+            Console.WriteLine("Finalizacion del programa");
+                      
         }
         //-------------------------CLASE PUNTO-----------------------
         public class Punto
@@ -234,6 +243,78 @@ namespace practica
         }
 
     }
+    public static int ContadorDeObjetos()=> contadorDeObjetos;
+
+        public static void calcular()
+        {
+            Console.WriteLine("Ingrese un numero: ");
+            int numero1 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Ingrese un numero: ");
+            int numero2 = int.Parse(Console.ReadLine());
+            Console.WriteLine("Que operacion desea realizar con los numeros?");
+            Console.WriteLine("(1)Suma: ");
+            Console.WriteLine("(2)Resta: ");
+            Console.WriteLine("(3)Multipliacacion: ");
+            Console.WriteLine("(4)Division: ");
+            Console.WriteLine("ELIJA UNA OPCION: ");
+            string opcion = Console.ReadLine();
+
+            switch (opcion)
+            {
+                case "1":
+                    Console.WriteLine($"la suma es: {numero1+numero2}"); 
+                    break;
+                case "2":
+                    Console.WriteLine($"la resta es: {numero1 - numero2}");
+                    break;
+                case "3":
+                    Console.WriteLine($"la multipliacacion es: {numero1 * numero2}");
+                    break;
+                case "4":
+                    Console.WriteLine($"la division es: {numero1 / numero2}");
+                    break;
+                    default:
+                    Console.WriteLine("Seleccione una opcion correcta!");
+                    break;
+            }
+
+        }
+//-----------------------------ARRAYS-------------------------------
+
+
+        public static void Main(string[] args)
+        {
+            //array implicito
+            var datos = new[] {"Juan", "Diaz", "España"};
+
+            //array de objetos
+            Empleados[] arrayEmpleados = new Empleados[2];
+            Empleados Ana = new Empleados("Ana", 34);
+            arrayEmpleados[0] = Ana;
+
+            //array de tipos o clases anonimas
+
+            var personas = new[]
+            {
+                new {nombre = "Lucas", edad = 23},
+                new {nombre = "Maria", edad = 56},
+                new {nombre = "Pedro", edad = 37}
+            };
+
+        }
+        
+        
 
     }
+    public class Empleados
+    {
+        private string nombre;
+        private int edad;
+        public Empleados(string nombre, int edad)
+        {
+            this.nombre = nombre;
+            this.edad = edad;
+        }
+    }
+    
 }
