@@ -388,6 +388,154 @@ namespace practica
             }
             return datos;
         }
+        
+        //--------------------------HERENCIA Y POLIMORFISMO--------------------------
+
+        static void Main(string[] args)
+        {
+            Caballo Babieca = new Caballo("Babieca");
+            Humano Juan = new Humano("Juan");
+            Gorila Copito = new Gorila("Copito");
+
+            Mamiferos animal2 = new Mamiferos("Bucefalo");
+            Mamiferos animal = new Caballo("Bucefalo");//Principio de sustitucion
+            Mamiferos persona = new Humano("Pablo"); //Principio de sustitucion
+
+            animal2 = Babieca; //Principio de sustitucion 2
+
+            Mamiferos[] almacenAnimales = new Mamiferos[3];
+            almacenAnimales[0] = Babieca;
+            almacenAnimales[1] = Juan;
+            almacenAnimales[2] = Copito;
+
+            for(int i = 0; i < 3; i++)
+            {
+                almacenAnimales[i].pensar();//aplicacion del polimorfismo en el metodo pensar
+            }
+
+            //Copito.trepar();
+            //Juan.getNombre();
+            //Babieca.getNombre();
+            //Copito.getNombre();
+        }
+
+    }
+
+    class Mamiferos
+    {
+
+        private string nombreSerVivo;
+
+        public Mamiferos(string nombre)
+        {
+            nombreSerVivo = nombre;    
+        }
+        protected void respirar()
+        {
+            Console.WriteLine("Soy capaz de respirar");
+        }
+
+        public void cuidarCrias()
+        {
+            Console.WriteLine("Cuido de mis crias hasta que se valgan por si solas");
+        }
+
+        public virtual void pensar()
+        {
+            Console.WriteLine("Pensamiento basico");
+        }
+
+        public void getNombre()
+        {
+            Console.WriteLine($"El nombre del ser vivo es: {nombreSerVivo}");
+        }
+    }
+
+    class Caballo : Mamiferos
+    {
+        public Caballo(string nombreCaballo) : base(nombreCaballo)
+        {
+
+        }
+        public void galopar()
+        {
+            Console.WriteLine("Soy capaz de galopar");
+            respirar();
+        }
+    }
+    
+    class Humano : Mamiferos    
+    {
+
+        public Humano(string nombreHumano) : base(nombreHumano)
+        {
+            
+        }
+        public override void pensar()
+        {
+            Console.WriteLine("Soy capaz de pensar y razonar");
+        }
+    }
+
+    class Gorila : Mamiferos
+    {
+
+        public Gorila(string nombreGorila) : base(nombreGorila)
+        {
+
+        }
+        public void trepar()
+        {
+            Console.WriteLine("Soy capaz de trepar");        
+        }
+
+        public override void pensar()
+        {
+            Console.WriteLine("Pensamiento intuitivo avanzado");
+        }
+        //---------------------------EJERCICIO----------------------------
+
+        static void Main(string[] args)
+        {
+            Avion miAvion = new Avion();
+            miAvion.conducir();
+            miAvion.arrancarMotor();
+            Auto miAuto = new Auto();
+            miAuto.conducir();
+            miAuto.arrancarMotor();
+            Vehiculo miVehiculo = new Auto();
+            miVehiculo.pararMotor();    
+        }
+    }
+    class Vehiculo
+    {
+        public void arrancarMotor()
+        {
+            Console.WriteLine("Motor arrancado");
+        }
+        public void pararMotor()
+        {
+            Console.WriteLine("Motor parado");
+        }
+        public virtual void conducir()
+        {
+            Console.WriteLine("Conduciendo");
+        }
+    }
+
+    class Avion : Vehiculo
+    {
+        public override void conducir()
+        {
+            Console.WriteLine("Conduciendo avion");
+        }
+    }
+    class Auto : Vehiculo
+    {
+        public override void conducir()
+        {
+            Console.WriteLine("Conduciendo auto");
+        }
     }
     
 }
