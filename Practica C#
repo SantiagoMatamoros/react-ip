@@ -389,7 +389,7 @@ namespace practica
             return datos;
         }
         
-        //--------------------------HERENCIA Y POLIMORFISMO--------------------------
+       //--------------------------HERENCIA, POLIMORFISMO E INTERFACES--------------------------
 
         static void Main(string[] args)
         {
@@ -408,10 +408,20 @@ namespace practica
             almacenAnimales[1] = Juan;
             almacenAnimales[2] = Copito;
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 almacenAnimales[i].pensar();//aplicacion del polimorfismo en el metodo pensar
             }
+
+            Ballena miBallena = new Ballena("Wally");
+            miBallena.nadar();
+
+            IMamiferosTerrestres IMiBabieca = Babieca;
+            ISaltoConPatas IMiBabieca2 = Babieca;
+
+            Console.WriteLine($"Numero de patas de Babieca: {IMiBabieca.numeroPatas()}");
+            Console.WriteLine($"Con cuantas patas salta Babieca?: {IMiBabieca2.numeroPatas()}");
+
 
             //Copito.trepar();
             //Juan.getNombre();
@@ -421,6 +431,21 @@ namespace practica
 
     }
 
+    interface IMamiferosTerrestres
+    {
+        int numeroPatas();
+    }
+    interface IanimalesYDeportes
+    {
+        string tipoDeporte();
+        Boolean esOlimpico();
+    }
+
+    interface ISaltoConPatas
+    {
+        int numeroPatas();
+    }
+
     class Mamiferos
     {
 
@@ -428,7 +453,7 @@ namespace practica
 
         public Mamiferos(string nombre)
         {
-            nombreSerVivo = nombre;    
+            nombreSerVivo = nombre;
         }
         protected void respirar()
         {
@@ -451,7 +476,20 @@ namespace practica
         }
     }
 
-    class Caballo : Mamiferos
+    class Ballena : Mamiferos
+    {
+        public Ballena(string nombreBallena) :base(nombreBallena)
+        {
+
+        }
+
+        public void nadar()
+        {
+            Console.WriteLine("Soy capaz de nadar");
+        }
+    }
+
+    class Caballo : Mamiferos, IMamiferosTerrestres, IanimalesYDeportes, ISaltoConPatas
     {
         public Caballo(string nombreCaballo) : base(nombreCaballo)
         {
@@ -460,16 +498,35 @@ namespace practica
         public void galopar()
         {
             Console.WriteLine("Soy capaz de galopar");
-            respirar();
+            respirar(); 
+        }
+
+        int IMamiferosTerrestres.numeroPatas()
+        {
+            return 4;
+        }
+
+        int ISaltoConPatas.numeroPatas()
+        {
+            return 2;
+        } 
+        public string tipoDeporte()
+        {
+            return "Carrera de caballos";
+        }
+
+        public Boolean esOlimpico()
+        {
+            return true;
         }
     }
-    
-    class Humano : Mamiferos    
+
+    class Humano : Mamiferos
     {
 
         public Humano(string nombreHumano) : base(nombreHumano)
         {
-            
+
         }
         public override void pensar()
         {
@@ -477,7 +534,7 @@ namespace practica
         }
     }
 
-    class Gorila : Mamiferos
+    class Gorila : Mamiferos, IMamiferosTerrestres
     {
 
         public Gorila(string nombreGorila) : base(nombreGorila)
@@ -486,13 +543,19 @@ namespace practica
         }
         public void trepar()
         {
-            Console.WriteLine("Soy capaz de trepar");        
+            Console.WriteLine("Soy capaz de trepar");
         }
 
         public override void pensar()
         {
             Console.WriteLine("Pensamiento intuitivo avanzado");
         }
+
+        public int numeroPatas()
+        {
+            return 2;
+        }
+        
         //---------------------------EJERCICIO----------------------------
 
         static void Main(string[] args)
@@ -500,11 +563,18 @@ namespace practica
             Avion miAvion = new Avion();
             miAvion.conducir();
             miAvion.arrancarMotor();
+            miAvion.pararMotor();
             Auto miAuto = new Auto();
             miAuto.conducir();
             miAuto.arrancarMotor();
-            Vehiculo miVehiculo = new Auto();
-            miVehiculo.pararMotor();    
+            Vehiculo Vehiculo = new Auto();
+            Vehiculo.pararMotor();
+
+            Console.WriteLine( "-------------PILOMORFISMO EN ACCION--------------------");
+            Vehiculo miVehiculo = miAuto;
+            miVehiculo.conducir();
+            miVehiculo = miAvion;
+            miAvion.conducir();
         }
     }
     class Vehiculo
