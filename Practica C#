@@ -422,6 +422,11 @@ namespace practica
             Console.WriteLine($"Numero de patas de Babieca: {IMiBabieca.numeroPatas()}");
             Console.WriteLine($"Con cuantas patas salta Babieca?: {IMiBabieca2.numeroPatas()}");
 
+            Lagartija Juancho = new Lagartija("Juancho");
+            Juancho.respirar();
+            Juancho.getNombre();
+            animal.getNombre();
+
 
             //Copito.trepar();
             //Juan.getNombre();
@@ -446,7 +451,30 @@ namespace practica
         int numeroPatas();
     }
 
-    class Mamiferos
+    abstract class Animales
+    {
+        public void respirar()
+        {
+            Console.WriteLine("Soy capaz de respirar");
+        }
+
+        public abstract void getNombre();
+    }
+
+    class Lagartija : Animales
+    {
+        private string nombreReptil;
+
+        public Lagartija(string nombre)
+        {
+            nombreReptil = nombre;  
+        }
+        public override void getNombre()
+        {
+            Console.WriteLine($"El nombre del reptil es: {nombreReptil}");
+        }
+    }
+    class Mamiferos : Animales
     {
 
         private string nombreSerVivo;
@@ -455,11 +483,7 @@ namespace practica
         {
             nombreSerVivo = nombre;
         }
-        protected void respirar()
-        {
-            Console.WriteLine("Soy capaz de respirar");
-        }
-
+        
         public void cuidarCrias()
         {
             Console.WriteLine("Cuido de mis crias hasta que se valgan por si solas");
@@ -470,15 +494,15 @@ namespace practica
             Console.WriteLine("Pensamiento basico");
         }
 
-        public void getNombre()
+        public override void getNombre()
         {
-            Console.WriteLine($"El nombre del ser vivo es: {nombreSerVivo}");
+            Console.WriteLine($"El nombre del mamifero es: {nombreSerVivo}");
         }
     }
 
     class Ballena : Mamiferos
     {
-        public Ballena(string nombreBallena) :base(nombreBallena)
+        public Ballena(string nombreBallena) : base(nombreBallena)
         {
 
         }
@@ -498,7 +522,7 @@ namespace practica
         public void galopar()
         {
             Console.WriteLine("Soy capaz de galopar");
-            respirar(); 
+            respirar();
         }
 
         int IMamiferosTerrestres.numeroPatas()
@@ -509,7 +533,7 @@ namespace practica
         int ISaltoConPatas.numeroPatas()
         {
             return 2;
-        } 
+        }
         public string tipoDeporte()
         {
             return "Carrera de caballos";
@@ -534,6 +558,17 @@ namespace practica
         }
     }
 
+    class Adolescente : Humano
+    {
+        public Adolescente(string nombreAdolescente) : base(nombreAdolescente)
+        {
+
+        }
+        public override void pensar()
+        {
+            Console.WriteLine("No puedo pensar con claridad");
+        }
+    }
     class Gorila : Mamiferos, IMamiferosTerrestres
     {
 
@@ -555,7 +590,15 @@ namespace practica
         {
             return 2;
         }
-        
+    }
+
+    class Chimpance : Gorila
+    {
+        public Chimpance(string nombreChimpance):base(nombreChimpance)
+        {
+
+        }
+    }
         //---------------------------EJERCICIO----------------------------
 
         static void Main(string[] args)
@@ -606,6 +649,49 @@ namespace practica
         {
             Console.WriteLine("Conduciendo auto");
         }
+        
+        //-------------------EJERCICIO INTERFACES------------------
+        static void Main(string[] args)
+        {
+            AvisosTrafico av1 = new AvisosTrafico();
+            av1.mostrarAviso();
+
+            AvisosTrafico av2 = new AvisosTrafico("Jefatura Provincial", "Sancion por exceso de velocidad", "05-05-2021");    
+            av2.mostrarAviso();
+            Console.WriteLine(av2.getFecha());
+        }
+
+    class AvisosTrafico : IAvisos
+    {
+        private string remitente;
+        private string mensaje;
+        private string fecha;
+
+        public AvisosTrafico()
+        {
+            remitente = "DGT";
+            mensaje = "Sancion cometida: Pague antes de los 3 dias y se reducira en la sansion de un 50%";
+            fecha = "";
+        }
+        public AvisosTrafico(string remitente, string mensaje, string fecha)
+        {
+            this.remitente = remitente;
+            this.mensaje = mensaje; 
+            this.fecha = fecha;
+        }
+        public string getFecha()
+        {
+            return fecha;
+        }
+
+        public void mostrarAviso()
+        {
+            Console.WriteLine("Mensaje: {0} ha sido enviado por {1} el dia {2}", mensaje, remitente, fecha);
+        }
+     internal interface IAvisos
+    {
+        void mostrarAviso();
+        string getFecha();
     }
     
 }
