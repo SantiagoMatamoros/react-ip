@@ -36,5 +36,71 @@ class Empleado
         get => this._salario;
         set => this._salario = evaluaSalario(value);
     }
+    //-----------------------ENUM------------------------
+    namespace practica2 
+{ 
+    enum Bonus {bajo = 500, normal = 1000, bueno = 1500, extra = 3000}
+    class Program
+    {
+    static void Main(string[] args)
+    {
+            Bonus Antonio = Bonus.extra                                                             ;
+            double bonusAntonio = (double)Antonio;
 
+            double salarioAntonio = 1500 + bonusAntonio;
+
+            Console.WriteLine(salarioAntonio);
+
+            Empleado miEmpleado = new Empleado(Antonio, 1200);
+            Console.WriteLine($"El salario del empleado es: {miEmpleado.getSalario()}");
+    }
+
+    }
+
+    class Empleado
+    {
+        private double bonus, salario;
+
+        public Empleado(Bonus bonusEmpleado, double salario)
+        {
+            bonus = (double)bonusEmpleado;
+            this.salario = salario;
+        }
+        public double getSalario()
+        {
+            return salario + bonus;
+        }
+        //---------------------DESTRUCTORES--------------------
+
+        static void Main(string[] args)
+        {
+            ManejoArchivos miArchivo = new ManejoArchivos();
+            miArchivo.mensaje();
+        }
+
+    }
+    class ManejoArchivos
+    {
+        StreamReader archivo = null;
+        int contador = 0;
+        string linea;
+
+        public ManejoArchivos()
+        {
+            archivo = new StreamReader(@"C:\audio.log");
+            while((linea = archivo.ReadLine()) != null)
+            {
+                Console.WriteLine(linea);
+                contador++; 
+            }
+        }
+        public void mensaje()
+        {
+            Console.WriteLine($"hay {contador} lineas");
+        }
+        ~ManejoArchivos() //USO DEL DESTRUCTOR
+        {
+            archivo.Close();
+        }
+    }
 }
