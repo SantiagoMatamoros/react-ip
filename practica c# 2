@@ -103,4 +103,189 @@ class Empleado
             archivo.Close();
         }
     }
+    
+        //----------------------PROGRACION GNERICA---------------------
+
+        static void Main(string[] args)
+        {
+            AlmacenObjetos<Empleado> archivos = new AlmacenObjetos<Empleado>(4);
+            //archivos.agregar("Juan");
+            //archivos.agregar("Elena");
+            //archivos.agregar("Antonio");
+            //archivos.agregar("Sandra");
+            archivos.agregar(new Empleado(1500));
+            archivos.agregar(new Empleado(1200));
+            archivos.agregar(new Empleado(750));
+            archivos.agregar(new Empleado(3500));
+            Empleado salarioEmpleado = archivos.getElemento(3);
+            Console.WriteLine(salarioEmpleado.getSalario());
+
+        }
+    
+    }
+    class AlmacenObjetos<T>
+    {
+        private T [] datosElemento;
+        private int i = 0;  
+        public AlmacenObjetos(int z)
+        {
+            datosElemento = new T [z];  
+        }
+        public void agregar(T obj)
+        {
+            datosElemento[i] = obj;
+            i++;   
+        }
+        public T getElemento(int i)
+        {
+            return datosElemento[i];
+        }
+    }
+    class Empleado
+    {
+        private double salario;
+        public Empleado(double salario)
+        {
+            this.salario = salario; 
+        }
+        public double getSalario()
+        {
+            return salario;
+        }
+    }
+    //------------------GENERICOS CON RESTRICCIONES---------------
+        static void Main(string[] args)
+        {
+            almacenEmpleados<Director> empleados = new almacenEmpleados<Director>(3);
+            empleados.agregar(new Director(2500));
+            empleados.agregar(new Director(1500));
+            empleados.agregar(new Director(2000));
+            Director salario = empleados.getEmpleado(1);
+            Console.WriteLine(salario);
+
+            almacenEmpleados<Secretaria> empleados2 = new almacenEmpleados<Secretaria>(3);
+            empleados2.agregar(new Secretaria(2500));
+            empleados2.agregar(new Secretaria(1500));
+            empleados2.agregar(new Secretaria(2000));
+            Secretaria salario2 = empleados2.getEmpleado(1);
+            Console.WriteLine(salario);
+
+            almacenEmpleados<Electricista> empleados3 = new almacenEmpleados<Electricista>(3);
+            empleados3.agregar(new Electricista(2500));
+            empleados3.agregar(new Electricista(1500));
+            empleados3.agregar(new Electricista(2000));
+            Electricista salario3 = empleados3.getEmpleado(2);
+            Console.WriteLine(salario3);
+        }
+
+    }
+    interface IParaEmpeados
+    {
+        double getSalario();
+    }
+
+    class almacenEmpleados<T> where T : IParaEmpeados   
+    {
+        private int i = 0;
+        private T[] datosEmpleado;
+
+        public almacenEmpleados(int z)
+        {
+            datosEmpleado = new T[z];   
+        }
+        public void agregar(T obj)
+        {
+            datosEmpleado[i] = obj;
+            i++;
+        }
+        public T getEmpleado(int i)
+        {
+            return datosEmpleado[i];    
+        }
+    }
+    class Director : IParaEmpeados
+    {
+        private double salario;
+        public Director(int salario)
+        {
+            this.salario = salario;
+        }
+        public double getSalario()
+        {
+            return salario; 
+        }
+    }
+    class Secretaria : IParaEmpeados
+    {
+        private double salario;
+        public Secretaria(int salario)
+        {
+            this.salario = salario;
+        }
+        public double getSalario()
+        {
+            return salario;
+        }
+    }
+    class Electricista : IParaEmpeados
+    {
+        private double salario;
+        public Electricista(int salario)
+        {
+            this.salario = salario;
+        }
+        public double getSalario()
+        {
+            return salario;
+        }
+    }
+    //--------------------------COLECCIONES---------------------
+        static void Main(string[] args)
+        {
+            List<int> numeros = new List<int>();
+            //int[] listaNumeros = new int[] {3, 6, 8, 10, 50 };
+
+            //for(int i = 0; i < 5; i++)
+            //{
+            //    numeros.Add(listaNumeros[i]);
+            //}
+
+            //for(int i = 0; i < 5; i++)
+            //{
+            //    Console.WriteLine(numeros[i]);
+            //}
+
+            //Console.WriteLine("Cuantos elementos deseas introducir a la lista: ");
+            //int datos = int.Parse(Console.ReadLine()); 
+
+            //for(int  i = 0; i < datos; i++)
+            //{
+            //    numeros.Add(int.Parse(Console.ReadLine()));
+            //}
+            //Console.WriteLine("-------------------");
+            //for (int i = 0;i < datos; i++)
+            //{
+            //    Console.WriteLine(numeros[i]);
+            //}
+
+            Console.WriteLine("Introduce elementos en la coleccion, (0 para salir!)");
+
+            int elem = 1;
+
+            while(elem != 0)
+            {
+                elem = int.Parse(Console.ReadLine());
+                numeros.Add(elem);
+            }
+
+            Console.WriteLine("Elementos introducidos");
+
+            foreach(int elemento in numeros)
+            {
+                Console.WriteLine(elemento);    
+            }
+
+        }
+
+    }
 }
