@@ -277,7 +277,7 @@ class Empleado
                 elem = int.Parse(Console.ReadLine());
                 numeros.Add(elem);
             }
-
+            numeros.RemoveAt(numeros.Count -1);//SETENCIA PARA ELIMINAR UN VALOR DEL INDICE INDICADO
             Console.WriteLine("Elementos introducidos");
 
             foreach(int elemento in numeros)
@@ -288,4 +288,4 @@ class Empleado
         }
 
     }
-}
+
