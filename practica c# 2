@@ -277,15 +277,158 @@ class Empleado
                 elem = int.Parse(Console.ReadLine());
                 numeros.Add(elem);
             }
-            numeros.RemoveAt(numeros.Count -1);//SETENCIA PARA ELIMINAR UN VALOR DEL INDICE INDICADO
+            numeros.RemoveAt(numeros.Count -1);//SETENCIA PARA ELIMINAR EL ULTIMO VALOR DEL INDICE INDICADO
             Console.WriteLine("Elementos introducidos");
 
             foreach(int elemento in numeros)
             {
                 Console.WriteLine(elemento);    
             }
+            //---------------------------LINKEDLIST-------------------------
+        //static void Main(string[] args)
+        //{
+        //    LinkedList<int> numeros = new LinkedList<int>();  
+
+        //    foreach(int num in new int[] {10, 8, 6, 4, 2, 0 })
+        //    {
+        //        numeros.AddLast(num);
+        //    }
+        //    //foreach(int num in numeros)
+        //    //{
+        //    //    Console.WriteLine(num);
+        //    //}
+
+        //    //numeros.Remove(6);
+        //    LinkedListNode<int> nodoImp = new LinkedListNode<int>(15);
+        //    numeros.AddFirst(nodoImp);
+
+        //    for(LinkedListNode<int> nodo = numeros.First; nodo != null; nodo = nodo.Next)   //REVISAR EN LA DOCUMENTACION 
+        //    {
+        //        int numero = nodo.Value;
+        //        Console.WriteLine(numero);
+        //    }
+
+        //}
+        
+        //------------------COLAS(QUEUE)-------------------
+        static void Main(string[] args)
+        {
+            Queue<int> numeros= new Queue<int>();
+             
+            //RELLENANDO ELEMENTOS A LA COLA
+
+            foreach(int num in new int[] { 2, 4, 6, 8, 10 })
+            {
+                numeros.Enqueue(num);
+            }
+            
+            //RECORRIENDO LA COLA
+            Console.WriteLine("Recorriendo el QUEUE");
+
+            foreach(int num in numeros)
+            {
+                Console.WriteLine(num); 
+            }
+
+            //ELIMINANDO ELEMENTOS DEL QUEUE
+
+            numeros.Dequeue();
+
+            Console.WriteLine("Eliminando elementos");
+
+            foreach (int num in numeros)
+            {
+                Console.WriteLine(num);
+            }
+
+        }
+         //-----------------------STACKS O PILAS--------------------
+
+        //static void Main(string[] args)
+        //{
+        //    Stack<int> numeros = new Stack<int>();
+
+        //    //RELLENANDO ELEMENTOS A LA COLA
+
+        //    foreach (int num in new int[] { 10, 20, 30, 40, 50 })
+        //    {
+        //        numeros.Push(num);
+        //    }
+
+        //    //RECORRIENDO LA COLA
+        //    Console.WriteLine("Recorriendo la Pila");
+
+        //    foreach (int num in numeros)
+        //    {
+        //        Console.WriteLine(num);
+        //    }
+
+        //    //ELIMINANDO ELEMENTOS DEL QUEUE
+
+        //    numeros.Pop();
+
+        //    Console.WriteLine("Eliminando elementos");
+
+        //    foreach (int num in numeros)
+        //    {
+        //        Console.WriteLine(num);
+        //    }
+
+        
+        //}
+        
+        //----------------------DICCIONARIOS----------------------
+
+        static void Main(string[] args)
+        {
+            Dictionary<string, int> edades = new Dictionary<string, int>();
+
+            //RELLENAR EL DICCIONARIO
+
+            edades.Add("Juan", 18);
+            edades.Add("Lucia", 35);
+
+            edades["Maria"] = 25;
+            edades["Antonio"] = 29;
+
+            //RECORRER EL DICCIONARIO
+
+            foreach(KeyValuePair<string, int> persona in edades)
+            {
+                Console.WriteLine("Nombre: {0} Edad: {1}", persona.Key, persona.Value);
+            }
 
         }
 
+        }
+         //--------------------DELEGADOS-------------------
+
+
+        //DEFINICION DEL OBJETO DELEGADO
+        delegate void objetoDelegado();
+        static void Main(string[] args)
+        {
+            //CREACION DEL OBJETO DELEGADO APUNTANDO A MENSAJEBIENVENIDA
+            objetoDelegado elDelegado = new objetoDelegado(MensajeBienvenida.saludoBienvenida);
+            //UTILIZACION DEL DELEGADO PARA LLAMAR AL METODO SALUDOBIENVENIDA
+            elDelegado();
+            elDelegado = new objetoDelegado(MensajeDespedida.saludoDespedida);
+            elDelegado();
+        }
     }
+    class MensajeBienvenida
+    {
+        public static void saludoBienvenida()
+        {
+            Console.WriteLine("Hola que tal, bienvenidos");
+        }
+    }
+    class MensajeDespedida
+    {
+        public static void saludoDespedida()
+        {
+            Console.WriteLine("Que tal, hasta luego");
+        }
+    }
+}
 
