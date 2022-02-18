@@ -429,6 +429,107 @@ class Empleado
         {
             Console.WriteLine("Que tal, hasta luego");
         }
+        static void Main(string[] args)
+        {
+            List<Personas> gente = new List<Personas>();
+            Personas P1 = new Personas();
+
+            P1.Nombre = "Juan";
+            P1.Edad = 34;
+            Personas P2 = new Personas();
+            P2.Nombre = "Lucia";
+            P2.Edad = 23;
+            Personas P3 = new Personas();
+            P3.Nombre = "Antonio";
+            P3.Edad = 26;
+            Personas P4 = new Personas();
+            P4.Nombre = "Maria";
+            P4.Edad = 18;
+
+            gente.AddRange(new Personas[] {P1, P2, P3, P4});
+
+            Predicate<Personas> elPredicado = new Predicate<Personas>(existeJuan);
+            bool existe = gente.Exists(elPredicado);
+            if (existe) Console.WriteLine("Existe Juan");
+            else Console.WriteLine("No existe ese nombre");
+        }
+
+        static bool existeJuan(Personas persona)
+        {
+            if(persona.Nombre=="Juan")return true;
+            else return false;
+        }
+
     }
+    class Personas
+    {
+        private string nombre;
+        private int edad;
+
+        public string Nombre { get => nombre; set => nombre = value; }
+        public int Edad { get => edad; set => edad = value; }
+    }
+    }
+    //--------------------------EXPRESIONES LAMBDA--------------------------
+
+
+        //public delegate int operacionesMatematicas(int num);
+        //public delegate int operacionesMatematicas2(int num1, int num2);
+        //public delegate bool comparaPersonas(int edad1, int edad2);
+        //public delegate bool comparaNombre(string nombre1, string nombre2);
+        //static void Main(string[] args)
+        //{
+        //USO DEL DELEGADO
+        //EXPRESION LAMBDA
+        //operacionesMatematicas operacion = new operacionesMatematicas(num => num*num);
+        //Console.WriteLine(operacion(7));
+        //                                                                            //EXPRESION LAMBDA
+        //operacionesMatematicas2 operacionSuma = new operacionesMatematicas2((numero1, numero2) => numero1 + numero2);
+        //Console.WriteLine("La suma es: " + operacionSuma(4, 7));
+
+
+
+        //Personas P1 = new Personas();
+        //P1.Nombre = "Juan";
+        //P1.Edad = 34;
+        //Personas P2 = new Personas();
+        //P2.Nombre = "Lucia";
+        //P2.Edad = 23;
+
+        //comparaPersonas comparaEdad = ((int persona1 , int persona2) => persona1==persona2);
+        //Console.WriteLine(comparaEdad(P1.Edad, P2.Edad));
+
+        //comparaNombre comparaNombre = ((string persona1 , string persona2)=> persona1==persona2);
+        //Console.WriteLine(comparaNombre(P1.Nombre, P2.Nombre));
+
+
+
+        //List<int> numeros = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        //                                        //EXPRESION LABDA
+        //List<int> numerosPares = numeros.FindAll(i => i % 2 == 0);
+
+        //foreach (int numero in numerosPares) Console.WriteLine(numero);
+
+        //}
+        //public static int cuadrado(int numero)
+        //{
+        //    return numero * numero;
+        //}
+
+        //public static int suma(int num1, int num2)
+        //{
+        //    return num1 + num2; 
+        //}
+
+
+        //}
+        //class Personas
+        //{
+        //    private string nombre;
+        //    private int edad;
+
+        //    public string Nombre { get => nombre; set => nombre = value; }
+        //    public int Edad { get => edad; set => edad = value; }
+        //}
 }
 
