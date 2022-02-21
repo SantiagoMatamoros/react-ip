@@ -531,5 +531,20 @@ class Empleado
         //    public string Nombre { get => nombre; set => nombre = value; }
         //    public int Edad { get => edad; set => edad = value; }
         //}
+        //-------------------------EXPRESIONES REGULARES----------------------
+
+        static void Main(string[] args)
+        {
+            string frase = "Mi nombre es Juan y mi numero de telefono es (+44)123-45-67, (+34)123-45-67 y mi codigo postal es 110103";
+
+            //string patron = @"\d{3}-\d{2}-\d{2}";
+            string patron = @"\+34|\+44";
+
+            Regex miRegex = new Regex(patron);
+            MatchCollection elMatch = miRegex.Matches(frase);
+
+            if (elMatch.Count > 0) Console.WriteLine("Se ha encontrado numeros");
+            else Console.WriteLine("No se ha encontrado numeros");
+        }
 }
 
