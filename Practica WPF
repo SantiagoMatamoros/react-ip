@@ -1,0 +1,66 @@
+-----------------------------BOTONES CON XAML-------------------------
+ <Grid>
+        <Button Margin="193,56,507,278">
+            <Button.Width>200</Button.Width>
+            <Button.Height>100</Button.Height>
+            <Button.Content>
+                <WrapPanel>
+                    <TextBlock Foreground="Chocolate">Hola</TextBlock>
+                    <TextBlock Foreground="DarkCyan">Click</TextBlock>
+                    <TextBlock Foreground="MediumBlue">Enviar</TextBlock>
+                </WrapPanel>
+            </Button.Content>
+        </Button>
+    </Grid
+    
+    ------------------------BOTON CON C#---------------------------
+    using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace practicaWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+            Grid miGrid = new Grid();
+            this.Content = miGrid;
+            Button btn = new Button();
+            WrapPanel miWrap = new WrapPanel();
+
+            TextBlock txt1 = new TextBlock();
+            txt1.Background = Brushes.Red;
+            txt1.Foreground = Brushes.SeaGreen;
+            txt1.Text = "Clic";
+            miWrap.Children.Add(txt1);
+
+            TextBlock txt2 = new TextBlock();
+            txt2.Text = "Enviar";
+            miWrap.Children.Add(txt2);
+
+            TextBlock txt3 = new TextBlock();
+            txt3.Text = "Añadir";
+            miWrap.Children.Add(txt3);
+
+            btn.Content = miWrap;
+
+            miGrid.Children.Add(btn);
+        }
+    }
+}
