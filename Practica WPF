@@ -117,6 +117,62 @@
         
     </StackPanel>
     
+-------------------------------------------------------INOTIFYpROPERTYcHANGED----------------------------------------------------
+------------------------CLASS CAMBIONOMBRE------------------------------
+namespace practicaWPF
+{
+    public class CambioNombre : INotifyPropertyChanged
+    {
+        private string nombre, apellido, nombreCompleto;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string property)
+        {
+            if(PropertyChanged is null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(property));
+            }
+        }
+
+        public string Nombre { get { return nombre; } set { nombre = value; OnPropertyChanged("Nombre_completo"); } }
+        public string Apellido { get { return apellido; } set { apellido = value; OnPropertyChanged("Nombre_completo"); } }
+        public string Nombre_completo { get {nombreCompleto = Nombre + " " + Apellido; return nombreCompleto; } set {  } }
+
+    }
+}
+
+-----------------------------CLASE MAINWINDOWN-------------------------
+namespace practicaWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            CambioNombre juntaNombreYApellido = new CambioNombre { Nombre = "Juan", Apellido = "Diaz" };
+
+            this.DataContext = juntaNombreYApellido;
+        }
+    }
+}
+
+--------------------------------CODIGO XAML-----------------------------------------
+<StackPanel>
+
+        <Label Content="Nombre"></Label>
+        <TextBox Width="100" Height="30" Margin="10" Text="{Binding Path=Nombre, Mode=TwoWay}"></TextBox>
+        <Label Content="Apellido"></Label>
+        <TextBox Width="100" Height="30" Margin="10" Text="{Binding Path=Apellido, Mode=TwoWay}"></TextBox>
+        <Label Content="Nombre Completo"></Label>
+        <TextBox Width="100" Height="30" Margin="10" Text="{Binding Path=Nombre_completo, Mode=TwoWay}"></TextBox>
+        
+    </StackPanel>
+    
     ------------------------BOTON CON C#---------------------------
     using System;
 using System.Collections.Generic;
@@ -168,3 +224,71 @@ namespace practicaWPF
         }
     }
 }
+
+--------------------------------------------------------------------LISTBOX-------------------------------------------------------------
+----------------------------CODIGO C#------------------------
+namespace practicaWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            List<Poblacion> listaPob = new List<Poblacion>();
+            listaPob.Add(new Poblacion() { Poblacion1 = "Marid", Poblacion2 = "Barcelona", Temperatura1 = 15, Temperatura2 = 18});
+            listaPob.Add(new Poblacion() { Poblacion1 = "Valencia", Poblacion2 = "Alicante", Temperatura1 = 12, Temperatura2 = 20 });
+            listaPob.Add(new Poblacion() { Poblacion1 = "Malaga", Poblacion2 = "Bilbao", Temperatura1 = 25, Temperatura2 = 19 });
+            listaPob.Add(new Poblacion() { Poblacion1 = "Sevilla", Poblacion2 = "Coruña", Temperatura1 = 22, Temperatura2 = 28 });
+
+            listaPoblacion.ItemsSource = listaPob;  
+        }
+    }
+
+    public class Poblacion
+    {
+        public string Poblacion1 { get; set; }
+        public int Temperatura1 { get; set; }
+
+        public string Poblacion2 { get; set; }
+        public int Temperatura2 { get; set; }
+    }
+
+}
+
+-----------------------------------------CODIGO XAML--------------------------------------------
+<Window x:Class="practicaWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practicaWPF"
+        mc:Ignorable="d"
+        Title="Interfaz WPF" Height="550" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="200"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ListBox Name="listaPoblacion" HorizontalContentAlignment ="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+    </Grid>    
+</Window>
+
