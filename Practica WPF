@@ -107,6 +107,15 @@
 
     </Grid>
 </Window>
+
+---------------------------DATA BINDING---------------------------
+<StackPanel>
+
+        <TextBox Width="100" Name="miCuadro" Margin="150" Text="{Binding ElementName=miSlider, Path=Value, Mode=TwoWay}"></TextBox>
+
+        <Slider Width="350" Name="miSlider" Minimum="0" Maximum="100"></Slider>
+        
+    </StackPanel>
     
     ------------------------BOTON CON C#---------------------------
     using System;
