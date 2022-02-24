@@ -239,12 +239,32 @@ namespace practicaWPF
             InitializeComponent();
 
             List<Poblacion> listaPob = new List<Poblacion>();
-            listaPob.Add(new Poblacion() { Poblacion1 = "Marid", Poblacion2 = "Barcelona", Temperatura1 = 15, Temperatura2 = 18});
-            listaPob.Add(new Poblacion() { Poblacion1 = "Valencia", Poblacion2 = "Alicante", Temperatura1 = 12, Temperatura2 = 20 });
-            listaPob.Add(new Poblacion() { Poblacion1 = "Malaga", Poblacion2 = "Bilbao", Temperatura1 = 25, Temperatura2 = 19 });
-            listaPob.Add(new Poblacion() { Poblacion1 = "Sevilla", Poblacion2 = "Coruña", Temperatura1 = 22, Temperatura2 = 28 });
+            listaPob.Add(new Poblacion() { Poblacion1 = "Marid", Poblacion2 = "Barcelona", Temperatura1 = 26, Temperatura2 = 18, DiferenciaTemp = 8});
+            listaPob.Add(new Poblacion() { Poblacion1 = "Valencia", Poblacion2 = "Alicante", Temperatura1 = 9, Temperatura2 = 21, DiferenciaTemp = 12});
+            listaPob.Add(new Poblacion() { Poblacion1 = "Malaga", Poblacion2 = "Bilbao", Temperatura1 = 12, Temperatura2 = 19, DiferenciaTemp = 6});
+            listaPob.Add(new Poblacion() { Poblacion1 = "Sevilla", Poblacion2 = "Coruña", Temperatura1 = 24, Temperatura2 = 25, DiferenciaTemp = 1});
 
             listaPoblacion.ItemsSource = listaPob;  
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MessageBox.Show((listaPoblacion.SelectedItem as Poblacion).Poblacion1 + " " + (listaPoblacion.SelectedItem as Poblacion).Temperatura1 + " °C " +
+                (listaPoblacion.SelectedItem as Poblacion).Poblacion2 + " " + (listaPoblacion.SelectedItem as Poblacion).Temperatura2 + " °C ");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Debes seleccionar un item!");
+            }
+            
+        }
+
+        private void TextBlock_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show((listaPoblacion.SelectedItem as Poblacion).Poblacion1 + " " + (listaPoblacion.SelectedItem as Poblacion).Temperatura1 + " °C " +
+            (listaPoblacion.SelectedItem as Poblacion).Poblacion2 + " " + (listaPoblacion.SelectedItem as Poblacion).Temperatura2 + " °C ");
         }
     }
 
@@ -255,12 +275,14 @@ namespace practicaWPF
 
         public string Poblacion2 { get; set; }
         public int Temperatura2 { get; set; }
+
+        public int DiferenciaTemp{ get; set; }
     }
 
 }
 
 -----------------------------------------CODIGO XAML--------------------------------------------
-<Window x:Class="practicaWPF.MainWindow"
+Window x:Class="practicaWPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -283,12 +305,128 @@ namespace practicaWPF
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" PreviewMouseDown="TextBlock_PreviewMouseDown" Text="{Binding Poblacion1}"></TextBlock>
+                        <TextBlock Grid.Column="1" PreviewMouseDown="TextBlock_PreviewMouseDown" Text="{Binding Temperatura1}"></TextBlock>
+                        <TextBlock Grid.Column="2" PreviewMouseDown="TextBlock_PreviewMouseDown" Text="{Binding Poblacion2}"></TextBlock>
+                        <TextBlock Grid.Column="3" PreviewMouseDown="TextBlock_PreviewMouseDown" Text="{Binding Temperatura2}"></TextBlock>
+                        <ProgressBar Grid.Column="4" Minimum="0" Maximum="30" Value="{Binding DiferenciaTemp}"></ProgressBar>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Button Grid.Row="1" Click="Button_Click">Dale clic!</Button>
         
     </Grid>    
 </Window>
 
+--------------------------------------------------------------------COMBOBOX Y CHECHBOX------------------------------------------------------------------
+------------------------------------CODIGO C#----------------------------
+namespace practicaWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+            List<Capitales> listaCapitales = new List<Capitales>();
+            listaCapitales.Add(new Capitales { NombreCapital = "Quito" });
+            listaCapitales.Add(new Capitales { NombreCapital = "Bogota" });
+            listaCapitales.Add(new Capitales { NombreCapital = "Caracas" });
+            listaCapitales.Add(new Capitales { NombreCapital = "Buenos Aires" });
+            listaCapitales.Add(new Capitales { NombreCapital = "DF" });
+
+            cbCapitales.ItemsSource = listaCapitales;
+
+        }
+
+        private void chbCapitales_Checked(object sender, RoutedEventArgs e)
+        {
+            Quito.IsChecked = true;
+            Bogota.IsChecked = true;
+            Caracas.IsChecked = true;
+            Buenos_Aires.IsChecked = true;
+            DF.IsChecked = true;
+        }
+
+        private void chbCapitales_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Quito.IsChecked = false;
+            Bogota.IsChecked = false;
+            Caracas.IsChecked = false;
+            Buenos_Aires.IsChecked = false;
+            DF.IsChecked = false;
+        }
+
+        private void individual_Checked(object sender, RoutedEventArgs e)
+        {
+            if(Quito.IsChecked == true && Bogota.IsChecked == true && Caracas.IsChecked == true && Buenos_Aires.IsChecked == true && DF.IsChecked == true)
+            {
+                chbCapitales.IsChecked = true;
+            }
+            else
+            {
+                chbCapitales.IsChecked = null;
+            }
+        }
+        private void individual_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (Quito.IsChecked == false && Bogota.IsChecked == false && Caracas.IsChecked == false && Buenos_Aires.IsChecked == false && DF.IsChecked == false)
+            {
+                chbCapitales.IsChecked = false;
+            }
+            else
+            {
+                chbCapitales.IsChecked = null;
+            }
+        }
+    }
+    public class Capitales
+    {
+        public string NombreCapital { get; set; }
+    }
+}
+---------------------------------CODIGO XAML---------------------------------
+Window x:Class="practicaWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practicaWPF"
+        mc:Ignorable="d"
+        Title="Interfaz WPF" Height="550" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <ComboBox Name ="cbCapitales">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding NombreCapital}" FontSize="16"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Grid.Column="1" >
+            <Label FontSize="18" FontWeight="ExtraBold" HorizontalAlignment="Center">Paises</Label>
+            <CheckBox Name ="chbCapitales" IsThreeState="True" Margin="200,50,0,30" Checked="chbCapitales_Checked" Unchecked="chbCapitales_Unchecked">Agregar todas</CheckBox>
+            <StackPanel Margin="200,0,500,0">
+                <CheckBox Name ="Quito" Checked="individual_Checked" Unchecked="individual_Unchecked">Quito</CheckBox>
+                <CheckBox Name ="Bogota" Checked="individual_Checked" Unchecked="individual_Unchecked">Bogotá</CheckBox>
+                <CheckBox Name ="Caracas" Checked="individual_Checked" Unchecked="individual_Unchecked">Caracas</CheckBox>
+                <CheckBox Name ="Buenos_Aires" Checked="individual_Checked" Unchecked="individual_Unchecked">Buenos Aires</CheckBox>
+                <CheckBox Name ="DF" Checked="individual_Checked" Unchecked="individual_Unchecked">DF</CheckBox>
+            </StackPanel>
+        </StackPanel>
+    </Grid>    
+</Window>
