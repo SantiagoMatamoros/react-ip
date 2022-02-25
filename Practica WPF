@@ -430,3 +430,86 @@ Window x:Class="practicaWPF.MainWindow"
         </StackPanel>
     </Grid>    
 </Window>
+--------------------------------------------------------------------RADIO BUTTON-------------------------------------------------------------
+------------------------------CODIGO C#-----------------------------------
+namespace practicaWPF
+{
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+
+        }
+
+        private void RadioButton_Click(object sender, RoutedEventArgs e)
+        {
+            Erojo.Visibility = Visibility.Visible;
+            Eamarillo.Visibility = Visibility.Hidden;
+            Everde.Visibility = Visibility.Hidden;
+        }
+
+        private void RadioButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            Erojo.Visibility = Visibility.Hidden;
+            Eamarillo.Visibility = Visibility.Visible;
+            Everde.Visibility = Visibility.Hidden;
+        }
+
+        private void RadioButton_Click_2(object sender, RoutedEventArgs e)
+        {
+            Erojo.Visibility = Visibility.Hidden;
+            Eamarillo.Visibility = Visibility.Hidden;
+            Everde.Visibility = Visibility.Visible;
+        }
+    }
+}
+-----------------------------------CODIGO XAML---------------------------------
+<Window x:Class="practicaWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practicaWPF"
+        mc:Ignorable="d"
+        Title="Interfaz WPF" Height="550" Width="1200">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="SEMAFORO" FontSize="22" FontStyle="Oblique" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="DarkMagenta"></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                    <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="50,100,0,0">
+                    <RadioButton Margin="10" Click="RadioButton_Click">
+                        <TextBlock Text="Rojo" Foreground="Red" Background="Black" FontSize="35"></TextBlock>
+                    </RadioButton>
+                    <RadioButton Margin="10" Click="RadioButton_Click_1">
+                        <TextBlock Text="Amarrillo" Foreground="Yellow" Background="Black" FontSize="35"></TextBlock>
+                    </RadioButton>
+                    <RadioButton Margin="10" Click="RadioButton_Click_2">
+                        <TextBlock Text="Verde" Foreground="LightGreen" Background="Black" FontSize="35"></TextBlock>
+                    </RadioButton>
+                </StackPanel>
+                <Grid Grid.Column="1">
+                    <Image Source="C:\Users\fmatamoros\Desktop\semaforo.png" Width="388" Height="394" Margin="88,2,124,398"/>
+                    <Ellipse Width="80" Height="80" Fill="Red" Margin="247,58,269,656" Name="Erojo" Visibility="Hidden"></Ellipse>
+                    <Ellipse Width="85" Height="85" Fill="Yellow" Margin="229,163,251,546" Name ="Eamarillo" Visibility="Hidden"></Ellipse>
+                    <Ellipse Width="85" Height="85" Fill="Green" Margin="229,270,250,436" Name="Everde" Visibility="Hidden"></Ellipse>
+                </Grid>
+            </Grid>
+        </StackPanel>
+                  
+    </Grid>
+</Window>
