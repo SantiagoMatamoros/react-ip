@@ -1,0 +1,142 @@
+-------------------------------------------CLASE PROGRAM------------------------------------
+using practica.asp.net;
+
+var builder = WebApplication.CreateBuilder(args);
+
+var startup = new Startup(builder.Configuration);
+startup.ConfireServices(builder.Services);
+
+
+var app = builder.Build();
+
+startup.Configure(app, app.Environment);
+
+app.Run();
+
+------------------------------------------CLASE STARTUP-----------------------------------------
+using Microsoft.EntityFrameworkCore;
+
+namespace practica.asp.net
+{
+    public class Startup
+    {
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        public void ConfireServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));                                                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
+        }
+
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
+}
+
+---------------------------------------AUTORES_CONTROLLER-----------------------------------
+using Microsoft.AspNetCore.Mvc;
+using practica.asp.net.Entidades;
+
+namespace practica.asp.net.Controllers
+{
+    [ApiController]
+    [Route("api/autores")]
+    public class AutoresController : ControllerBase
+    {
+        [HttpGet]
+        public ActionResult<List<Autor>> Get()
+        {
+            return new List<Autor>() { 
+                new Autor() { Id = 1, Nombre = "Juan"},
+                new Autor() { Id = 2, Nombre = "Claudia"}
+            };
+        }
+    }
+}
+
+---------------------------------------- CLASE AUTOR------------------------------------------
+namespace practica.asp.net.Entidades
+{
+    public class Autor
+    {
+        public int Id{ get; set; }
+        public string Nombre{ get; set; }
+    }
+}
+
+---------------------------------------CLASE LIBROS_CONTROLLER---------------------------
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using practica.asp.net.Entidades;
+
+namespace practica.asp.net.Controllers
+{
+    [ApiController]
+    [Route("api/libros")]
+    public class LibrosController : ControllerBase
+    {
+        private readonly ApplicationDbContext context;
+
+        public LibrosController(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Libro>> Get(int id) 
+        {
+            return await context.Libros.FirstOrDefaultAsync(x => x.Id == id);
+        }
+        [HttpPost]
+        public async Task<ActionResult> Post(Libro libro)
+        {
+            var existeAutor = await context.Autores.AnyAsync(x => x.Id == libro.AutorId);
+            if (!existeAutor) return BadRequest($"No existe el autor de id: {libro.AutorId}");
+            context.Add(libro);
+            await context.SaveChangesAsync();
+            return Ok();    
+
+        }
+    }
+}
+-----------------------------------CLASE LIBRO-------------------------------
+namespace practica.asp.net.Entidades
+{
+    public class Libro
+    {
+        public int Id{ get; set; }
+        public string Titulo { get; set; }
+        public int AutorId{ get; set; }
+        public Autor Autor { get; set; }
+    }
+}
+
+
+
+
+
